@@ -526,6 +526,14 @@ abstract class Column
     public function getData()
     {
         $result = [];
+        
+        if($this->data === null) {
+            $this->data = [
+                'from' => null,
+                'to' => null,
+                'operator' => null
+            ];
+        }
 
         $hasValue = false;
         if ($this->data['from'] != $this::DEFAULT_VALUE) {
