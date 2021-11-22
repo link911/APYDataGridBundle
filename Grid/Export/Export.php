@@ -16,6 +16,7 @@ use APY\DataGridBundle\Grid\Column\ArrayColumn;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Template;
 
 abstract class Export implements ExportInterface, ContainerAwareInterface
 {
@@ -459,7 +460,7 @@ abstract class Export implements ExportInterface, ContainerAwareInterface
         $templates = [];
 
         $template = $this->twig->loadTemplate($theme);
-        while ($template instanceof TemplateWrapper) {
+        while ($template instanceof Template) {
             $templates[] = $template;
             $template = $template->getParent([]);
         }
